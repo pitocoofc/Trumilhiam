@@ -1,0 +1,18 @@
+<body style=margin:0;overflow:hidden;background:#000><canvas id=c><script>
+t=0;x=c.getContext('2d');
+setInterval(()=>{
+c.width=innerWidth;c.height=innerHeight;
+t+=0.1; // Velocidade
+for(i=0;i<500;i++){
+// Geometria procedural (Z, X, Y)
+z=(i*5-t*20)%2000; 
+if(z<=0)continue;
+s=400/z; // Scale/FOV
+p=Math.sin(i)*500*s+c.width/2;
+q=Math.cos(i)*500*s+c.height/2;
+// Render de pontos com fade de distância
+x.fillStyle=`rgba(255,255,255,${1-z/2000})`;
+x.fillText(".",p,q);
+}
+},33)
+</script>
